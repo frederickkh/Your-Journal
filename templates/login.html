@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    : Log In
+{% endblock %}
+
+{% block main %}
+    <h1 style="padding-bottom: 30px;"> Welcome back. </h1>
+    <form action="/login" method="post" style="display: inline-block;">
+        <div class="input-container form-group">
+    		<input autocomplete="off" type="text" name="username" required=""/>
+    		<label>Username</label>
+    	</div>
+    	<div class="input-container form-group">
+    		<input type="password" name="password" required=""/>
+    		<label>Password</label>
+    	</div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+    </form>
+    <footer style="padding-top: 30px;">
+        <p>Didn't have an account? <a href="/register">Register now</a></p>
+    </footer>
+{% endblock %}

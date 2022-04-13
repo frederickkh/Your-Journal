@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   {{ user }}'s Journal
+{% endblock %}
+
+{% block main %}
+    <h1 style="padding-bottom: 20px"> New Journal </h1>
+    <form action="/new" method="post">
+        <div style="padding-bottom: 20px;">
+            Date <span id="date" style="font-weight: bold; font-size: large;">{{ today }}</span>
+        </div>
+        <div class="input-container form-group" style="display: inline-block; width: 40%;">
+    		<input class="form-control-lg" autocomplete="off" type="text" name="title" required=""/>
+    		<label>Journal Title</label>
+    	</div>
+    	<div class="input-container form-group">
+    	    <textarea class="form-control" placeholder="Write something..." rows="3" cols="100" name="content" wrap="hard"></textarea>
+    	</div>
+        <div>
+            <button type="submit" class="btn btn-primary">Post</button>
+            <button type="button" class="btn" id="newcancel" onclick="location.href='/home'">Cancel</button>
+        </div>
+    </form>
+    <button class="btn btn-warning" data-toggle="collapse" data-target=".entities" style="margin-top: 15px; color: black;">
+        Writing tips
+        <svg class="bi bi-chevron-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+        </svg>
+    </button>
+    <div class="entities collapse">
+        <div class="card border-light mb-3" style="max-width: 50%;">
+            <div class="card-header">Some useful tools</div>
+            <div class="card-body">
+                <h4 class="card-title">Use these to tidy your journal content view</h4>
+                <p class="card-text">
+                    <table>
+                        <thead>
+                            <th>Write '&' followed by...</th>
+                            <th>to get...</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>ensp;</b></td>
+                                <td>Two blank spaces</td>
+                            </tr>
+                            <tr>
+                                <td><b>emsp;</b></td>
+                                <td>Four blank spaces</td>
+                            </tr>
+                            <tr>
+                                <td><b>copy;</b></td>
+                                <td>&copy;</td>
+                            </tr>
+                            <tr>
+                                <td><b>reg;</b></td>
+                                <td>&reg;</td>
+                            </tr>
+                            <tr>
+                                <td><b>uparrow;</b></td>
+                                <td>&uparrow; Up arrow</td>
+                            </tr>
+                            <tr>
+                                <td><b>rightarrow;</b></td>
+                                <td>&rightarrow; Right arrow</td>
+                            </tr>
+                            <tr>
+                                <td><b>downarrow;</b></td>
+                                <td>&downarrow; Down arrow</td>
+                            </tr>
+                            <tr>
+                                <td><b>leftarrow;</b></td>
+                                <td>&leftarrow; Left arrow</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    More on <a href="https://dev.w3.org/html5/html-author/charref" target="_blank">HTML entity code</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

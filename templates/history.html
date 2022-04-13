@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   History
+{% endblock %}
+
+{% block main %}
+    <h1 style="padding-bottom: 20px; text-align: left;">History</h1>
+    <div style="padding-bottom: 15px; text-align: left;">
+        <button type="button" class="btn btn-info" onclick="location.href='/home'">< Home</button>
+    </div>
+    <table class="table" id="history" style="text-align: left">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Action</th>
+                <th>Date Modified</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for journal in journals %}
+                <tr>
+                    <td>{{ journal.title }}</td>
+                    <td>{{ journal.action }}</td>
+                    <td>{{ journal.date }}</td>
+                </tr>
+                {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

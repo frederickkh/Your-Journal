@@ -1,0 +1,111 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: large;
+}
+
+/*main .form-control*/
+/*{*/
+    /* center form controls */
+/*    display: inline-block;*/
+
+    /* override Bootstrap's 100% width for form controls */
+/*    width: auto;*/
+/*}*/
+
+/*main*/
+/*{*/
+    /* scroll horizontally as needed */
+/*    overflow-x: auto;*/
+
+    /* center contents */
+/*    text-align: center;*/
+/*}*/
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+body
+{
+    background-color: #FFF;
+    color: #222;
+}
+
+button:active, button:focus
+{
+    outline: none;
+    box-shadow: none;
+}
+
+.darkmode
+{
+    background-color: #121212;
+    color: #FFF;
+}
+
+.pinned
+{
+    display: inline-block;
+}
+
+
+.input-container{
+	position:relative;
+	margin-bottom:25px;
+}
+
+.input-container label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:16px;
+	transition: all 0.5s ease-in-out;
+}
+
+.input-container input{
+  border:0;
+  border-bottom:1px solid #555;
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+}
+
+.input-container input:focus{
+ border:none;
+ outline:none;
+ border-bottom:1px solid #e74c3c;
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+}
+
+#pin
+{
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.card
+{
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.btn-dark
+{
+    color: #fff;
+}
+
+.card-dark
+{
+    background-color: #333;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <link href="/static/yourjournal.ico" rel="icon">
+
+        <!-- font -->
+        <link href="https://fonts.googleapis.com/css2?family=Merienda+One&display=swap" rel="stylesheet">
+        <!--icon-->
+        <script src="https://kit.fontawesome.com/4aef35a8c2.js" crossorigin="anonymous"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="/static/script.js"></script>
+
+        <title>YourJournal{% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="margin-bottom: 30px;">
+            <a class="navbar-brand" href="/home">YourJournal</a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/home">Journals</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <!--<li>-->
+                        <!--    <button class="btn" onclick="toggleDark()">-->
+                        <!--        <i class="far fa-moon" style="color: white"></i>-->
+                        <!--    </button>-->
+                        <!--</li>-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">{{ user }}</a>
+                            <div class="dropdown-menu" style="left: -90px;">
+                              <a class="dropdown-item" href="/user">User</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="/logout">Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes fadeIn" style="padding: 10px 70px 0 70px; margin: 0;">
+                {% for category, message in messages %}
+                    <div class="alert alert-dismissible alert-warning">
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>
+                      <h4 class="alert-heading">Hey!</h4>
+                      <p class="mb-0">{{ message }}</p>
+                    </div>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <main class="container p-4" style="padding-top: 0;">
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+
+</html>

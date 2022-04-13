@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   {{ user }}'s Journal
+{% endblock %}
+
+{% block main %}
+    <div>
+        <h1 style="padding-bottom: 20px; text-align: left;">Journals</h1>
+
+        <button style="margin-bottom: 30px;" type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href='/new'">+ Add Journal</button>
+        {% for journal in journals %}
+        <div class="card" id="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ journal.title }}</h4>
+                <h6 class="card-subtitle mb-2 text-muted">{{ journal.date_modified }}</h6>
+                <form method="POST" style="float:right">
+                    <button class="btn" name="pin" value="{{ journal.title }}" id="pin">
+                        <i class="fas fa-thumbtack"></i>
+                    </button>
+                    <a class="btn btn-primary" style="color: #fff" onclick="location.href='{{ url_for('edit', title = journal.title ) }}'" name="edit">Edit</a>
+                    <a class="btn btn-info" style="color: #fff" onclick="location.href='{{ url_for('view', title = journal.title ) }}'" name="view">View</a>
+                </form>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

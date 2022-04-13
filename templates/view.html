@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   {{ user }}'s Journal
+{% endblock %}
+
+{% block main %}
+    <button type="button" class="btn" id="home" onclick="location.href='/home'" style="margin-bottom: 20px;">< Home</button>
+    <h5 style="padding-bottom: 20px; font-family: 'Merienda One', cursive;"> {{ date }} </h5>
+    <h1 style="padding-bottom: 20px"> {{ title }} </h1>
+    <div>
+        <p style="font-family: 'Merienda One', cursive;">
+            {{ content }}
+        </p>
+    </div>
+{% endblock %}
